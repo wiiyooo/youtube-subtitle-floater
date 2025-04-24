@@ -1,0 +1,186 @@
+/**
+ * YouTube字幕浮窗插件的样式表
+ */
+
+/* 字幕浮窗容器 */
+.yt-subtitle-floater {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: var(--floater-width, 350px);
+  max-height: var(--floater-height, 300px);
+  background-color: rgba(33, 33, 33, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  overflow: hidden;
+  font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+  color: #fff;
+}
+
+/* 字幕浮窗标题栏 */
+.yt-subtitle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: move;
+  user-select: none;
+}
+
+/* 标题 */
+.yt-subtitle-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* 控制按钮容器 */
+.yt-subtitle-controls {
+  display: flex;
+  gap: 5px;
+}
+
+/* 控制按钮 */
+.yt-subtitle-controls button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.yt-subtitle-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* 字幕内容区 */
+.yt-subtitle-content {
+  padding: 10px;
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.yt-subtitle-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.yt-subtitle-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.yt-subtitle-content::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+/* 字幕容器 */
+.yt-subtitle-container {
+  margin-bottom: 12px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.yt-subtitle-container:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.yt-subtitle-container.active {
+  background-color: rgba(22, 115, 255, 0.3);
+}
+
+/* 字幕文本 */
+.yt-subtitle-text {
+  line-height: 1.5;
+  margin-bottom: 4px;
+  word-wrap: break-word;
+}
+
+/* 原始字幕 */
+.yt-subtitle-text.original {
+  color: white;
+}
+
+/* 翻译字幕 */
+.yt-subtitle-text.translated {
+  color: #aed6f1;
+  font-style: italic;
+  font-size: 0.95em;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 4px;
+  margin-top: 4px;
+}
+
+/* 错误提示 */
+.yt-subtitle-text.error {
+  color: #ff6b6b;
+}
+
+/* 最小化状态 */
+.yt-subtitle-floater.yt-subtitle-minimized .yt-subtitle-content {
+  display: none;
+}
+
+.yt-subtitle-floater.yt-subtitle-minimized {
+  width: auto;
+  max-height: none;
+}
+
+/* 适配暗色和亮色主题 */
+@media (prefers-color-scheme: light) {
+  .yt-subtitle-floater {
+    background-color: rgba(240, 240, 240, 0.9);
+    color: #333;
+  }
+  
+  .yt-subtitle-header {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  
+  .yt-subtitle-controls button {
+    color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .yt-subtitle-controls button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000;
+  }
+  
+  .yt-subtitle-container {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .yt-subtitle-container:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .yt-subtitle-container.active {
+    background-color: rgba(22, 115, 255, 0.2);
+  }
+  
+  .yt-subtitle-text.original {
+    color: #333;
+  }
+  
+  .yt-subtitle-text.translated {
+    color: #3498db;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .yt-subtitle-text.error {
+    color: #e74c3c;
+  }
+}
